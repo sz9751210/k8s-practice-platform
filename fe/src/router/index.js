@@ -25,16 +25,30 @@ const routes = [
     ],
   },
   {
-    path: "/event",
+    path: "/pod",
     component: Layout,
     icon: "list",
     children: [
       {
-        path: "/event",
-        name: "Events",
+        path: "/pod",
+        name: "Pod",
         icon: "list",
-        meta: { title: "Event", requireAuth: true },
-        component: () => import("@/views/event/index"),
+        meta: { title: "Pod", requireAuth: true },
+        component: () => import("@/views/pod/index"),
+      },
+    ],
+  },
+  {
+    path: "/deployment",
+    component: Layout,
+    icon: "list",
+    children: [
+      {
+        path: "/deployment",
+        name: "Deployment",
+        icon: "list",
+        meta: { title: "Deployment", requireAuth: true },
+        component: () => import("@/views/deployment/index"),
       },
     ],
   },

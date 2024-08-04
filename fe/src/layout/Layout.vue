@@ -9,7 +9,7 @@
             <el-image class="logo-image" :src="logo" />
             <span :class="[isCollapse ? 'is-collapse' : '']">
               <transition name="fade" @after-enter="showText = true">
-                <span class="logo-name" v-if="showText">IT Dashboard</span>
+                <span class="logo-name" v-if="showText">K8s Platform</span>
               </transition>
             </span>
           </div>
