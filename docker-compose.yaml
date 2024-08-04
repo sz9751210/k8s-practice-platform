@@ -1,0 +1,39 @@
+version: "3"
+services:
+  backend:
+    build: ./be
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      MONGO_URI: mongodb://mongo:27017/
+      SECRET_KEY: secret
+      MINIKUBE_VM_IP: 10.140.0.14
+      MINIKUBE_VM_USERNAME: alan_wang
+      MINIKUBE_SSH_KEY_PATH: /home/alan_wang/.ssh/id_rsa
+    volumes:
+      - /home/alan_wang/.ssh/id_rsa:/home/alan_wang/.ssh/id_rsa:ro
+    depends_on:
+      - mongo
+      
+  frontend:
+    build: ./fe
+    container_name: frontend
+    ports:
+      - "7070:7070"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    links:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_DATABASE: devops
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+    ports:
+      - "27017:27017"

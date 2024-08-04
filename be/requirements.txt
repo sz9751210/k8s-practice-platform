@@ -1,0 +1,12 @@
+Flask==2.1.1
+Werkzeug==2.0.3
+pymongo==4.0.1
+Flask-Cors
+bcrypt
+PyJWT
+requests
+python-dotenv
+pytz
+paramiko
+flask-socketio
+eventlet
